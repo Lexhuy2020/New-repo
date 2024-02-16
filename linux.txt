@@ -1,0 +1,50 @@
+bunzip2 ourarchive.tar
+
+#nen data
+zip ourthing.zip file1.txt file2.txt
+
+#compress data with tar command 
+tar -cvzf ourarchive.tar.gz file[1-3].txt
+
+#get inform from tar 
+file  ourarchive.tar.gz
+
+#-xvf extract, verbose, accept,z = gz option
+tar -xvzf ourarchive.tar.gz
+
+#-xvjf bz2 extract 
+tar -xvjf ourarchive.gz.bz2
+
+#bash script\
+ 
+file scrip.sh
+#!/bin/bash // first line in bash scrip
+bash scrip.sh  
+
+mkdir ~/Desktop/magic
+cd ~/Desktop/magic
+touch file1.txt
+ls -lh ~/Desktop/magic > ~/Desktop/magic.log
+
+#!/bin/bash 
+
+tar -cvzf backup.tar.gz ~/{Desktop,Desktop,Documents}
+ #add permission for file 
+ chmod +x filename
+
+ #schedulec cron
+ # m h dom mon dow conmand
+crontab -extract
+
+#GNU
+uname -o
+GNU/Linux
+
+sudo apt-get install gcc
+sudo apt-get update 
+apt-get remove <package name>
+sudo pat-get purge <package> /delete all configuration files
+  
+
+
+

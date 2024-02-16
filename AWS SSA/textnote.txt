@@ -1,0 +1,4 @@
+IAM service  : global  identity access Manage
+Root account , ko nen sd va shared
+    policies assign user pẻmission
+    
