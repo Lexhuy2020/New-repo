@@ -59,5 +59,8 @@ sudo mkdir -p /var/lib/jenkins/.kube
 sudo cp /path/to/your/kubeconfig /var/lib/jenkins/.kube/config
 sudo chown jenkins:jenkins /var/lib/jenkins/.kube/config
 sudo systemctl restart jenkins
-sudo chmod -R +r /home/iauro/.minikube/
+sudo chmod -R +r /home/huylx3/.minikube/
 
+sudo usermod -aG docker jenkins
+  
+fffff
