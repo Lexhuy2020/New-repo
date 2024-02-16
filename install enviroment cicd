@@ -63,4 +63,3 @@ sudo chmod -R +r /home/huylx3/.minikube/
 
 sudo usermod -aG docker jenkins
   
-fffff

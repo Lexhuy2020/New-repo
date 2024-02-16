@@ -1,0 +1,19 @@
+# IAM - indenfity access management
+create user , group ..permission access
+
+# AWS CLI
+install aws cli on window,mac ,Linux
+SDK
+aws configure 
+access ID:
+Secret key:
+region name:
+
+# IAM Roles for services 
+1 so services can thuc hien hanh dong tren chinh ban than no 
+=> ta cap quyen de cho aws service thuc hien voi IAM services
+common roles : EC2 instance Roles
+lambda function roles
+cloudFormation
+
+
