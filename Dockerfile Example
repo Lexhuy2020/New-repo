@@ -1,0 +1,21 @@
+
+
+1. chonj image du an
+2 chon image tu cac nguon tin cay
+3.chon image la alpine
+----------------------------------
+## Build stage ##
+FROM maven:3.5.3-jdk-alpine as build
+WoRDIR /app
+COPY . .
+RUN mnv install -DskipTests=true
+
+## run stage##
+s
+FROM amazon.....
+WORKDIR /run
+COPY --from=build /app/target/"sdsd".jar /run/"ds".jar
+
+EXPOSE 8080
+
+ENTRYPOINT java -jar /run/aada.jar

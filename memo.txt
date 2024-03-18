@@ -1,0 +1,6 @@
+LSE . FPT and FPT korea ,
+FPT offshore : 
+- 요구사항을 BA과 분석해서 개발자에게 절달하는업무를 했고 개발환경 까금 문제가 생길때 처리 도와드리고...프로젝트 모니터링하고 보고.
+LSE 쪽에 프로젝트 하는동안 CICD pineline 작성 와 설치 보조한다. OS update 보조한다.
+jenkins 에서 나오는 이슈도 처리해드린다.
+테스팅하고 이슈 전달 

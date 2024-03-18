@@ -16,4 +16,328 @@ common roles : EC2 instance Roles
 lambda function roles
 cloudFormation
 
+# EC2:
+Security groups 
+roles
+SSH
+
+EC2 instances Purchasing ops
+-on-demand <short workload, predictable pricing,pay per second
+-reserved(!&3year) 
+    reserved instances - long workload (upto 72% discount compared to on-demand)
+    can sell in maketplace
+    Convertible Reserved instances - long workload with flexible (66%)
+-saving plan(1& 3 year) -commitment to an amount of usage,long workload (discount up to 72%)
+-spot instances -short workload, cheap, can lose instance(less reliable)
+    get 90 % but can lose if your max price is less then current spt price
+
+EC2 Spot Instance Requests
+can get a discount 90% 
+spot fleet lowest cost
+
+elastic IP  co the fix ip public cua EC2
+
+# elastic Network Interfaces( ENI)
+
+# EC2 Hibernate
+# EBS volume 
+network drive can attach to your instances
+EBS cos the gan voi 1 instance va co the cos nhieu EBS  
+phai cung 1 AZ
+
+Snapshot la ban backup cua EBS 
+
+# AMI = amazon machine image
+make EC2 faster 
+EC2 instance Store 
+# EBS volume types
+gp2 ssd
+io1/2 ssd
+
+
+#EBS Encryption
+Make SNAPSHOT of EBS and create new EBS from snapshot with Encryption
+
+# High Availability & Scalability
+Scalability: Thich ung tot hon khi app or system chay
+Vertical Scalability: theo chieu doc/ tang size cua instances
+Example: RDS . ..Ecache
+-Horizontal Scalability: theo chieu ngang , tang number of instances,
+    Example: web apps, modern apps...
+
+HA = High Availability
+run system / apps with least 2 data center 
+goals is survice when data center loss
+ Run with mutil AZ
+  # ELB = Elastic
+  Have 4 types of LBC 
+    2022 deprecated X - Classic Load Balancer - CLB  - HTTP,HTTPS,TCP,SSL
+    - Application Load Balancer - ALB - HTTP/S, Websocket
+    - network Load Balancer - NLB - TCP, TLS, update
+    - Gateway Load Balancer -GWLB - Operates at layer 3 - IP protocol
+    
+# ALB is Layer 7 (HTTP)
+Routing based on Path,hostname/URL, query String ,Headers
+fit for micro Services, container based app
+port Mapping feature to redirect to a dynamic port in ECS 
+ Direct traffic to health 
+# Network Load Balancer 
+ Forward TCP , UDP to instances
+ handle milions request per seconds
+ less latency ~100 (400ms for ALB)
+Has one static IP per AZ  
+Used for Extreme Performance, TCP, UDP
+
+# Gateway Load Balancer 
+Deploy,scale,manage fleet of 3rd party network virtual appliances
+
+# Cross Zone Load Blancing
+luu luong truy cap chia deu cho all instance on all AZ
+-With ALB
+    enable by default
+    No charges dor inter AZ data
+    = neu muon chuyen data qua zone khac thi phai pay mopre , 
+    = but ALB cross zone 
+- NLB, GWLB
+    Disabled by default 
+    Pay CHarges for inter AZ date if enabled
+
+# SSL/ TLS Ce - basics 
+SNI= server name indication
+suport mutil certificate for mutil domain
+used for ALB NLB
+
+# Connection Draining
+Feature naming 
+    Connection Draining - for CLB
+    Deregistration Delay - for ALB& NLB
+
+# ASG / auto Scaling group
+    Scale out ( add EC2 Instances) to mactch a increased load
+    Scale in (remove EC2 Instances) to match a decreased load
+    have to mini and max instances
+    auto create instance    
+    Possible to scale based on CloudWatch alarms
+
+# Amazon RDS Overview 
+    RDS Relational Databases service
+    manage DB service use SQL 
+    postgres , mysql,mariaDB,...
+    RDS - Storage Auto Scaling
+RDS read replicas 
+Use cases 
+    You have a prooduction database that is taking on nomarl load 
+    Network cost when data from one to another AZ
+    Read replicas don't pay feature
+    
+# Am    azon Aurora
+    Support for Postgress and Mysql
+    Proprietary AWS
+    x5 performance improve MYsql and 3x Posrgres on RDS
+    Aurora storage auto grows in increments of 10GB -> 128TB
+    upto 15replicas 
+    6 repliacs 3 AZ different
+    can make some enpoint to access < read and write >
+Aurora replicas - auto Scaling
+Aurora Serverless 
+    Pay per second , can be more cost-effective
+    No planning needed 
+    Automation scaling based on actual usage
+Global Aurora
+    - Cross region read replicas 
+    -global database 
+        primary region , 
+        5 secondary regions ,replication lag is less than 1 second
+        16replicas per Secondary regions
+Aurora Machine Learning 
+    - 
+RDS Backups 
+    automated backups :
+        dayly full backup
+        transaction log backup by RDS  every 5 minutes
+        ability to restore at any point in time (1>35 days retention) 0 to disable auto backups
+    Manual DB Snapshots:
+        triggered by user 
+    *Trick:in stoped RDS database , will still pay for stage ,
+    snapshot is free should use it for restore 
+
+Aurora backups
+     - automated backups
+        1 >35 days ( cannot be disabled)
+RDS / Aurora Restore options
+    - RDS / Aurora Backup or Snapshot create a new DB
+    - Mysql RDS from S3
+        create a backup of your on-premises DB
+        restore it on Amazon S3restore Backup file on new RDS instance
+    - Mysql Aurora Cluster from S3
+        create a backup your on-premises DB using Percona XtraBackup
+        store file on AmazonS3
+        restore on New Aurora cluster running Mysql
+
+# Amazon RDS Proxy
+
+# Route 53 
+ -DNS terminologies 
+    DOmain REgistrar : Amazon route 53, GoDaddy...
+    DNS Records: A,AAA,
+    zone file: contains DNS Records
+    Name Server 
+    Top lv Domain <TLD> .com...
+    Second lv domain <SLD> asdad.com
+
+- highly avaiable , Scanable, fully managed ,Authoritative = can update DNS Records
+
+Route 53- Records TTL ( Time to Live)
+
+# CNAME vs Alias 
+AWS Resources (Load Blancer,Cloudfront...) expose an AWS hostname
+
+CNAME : Point a hostname to any other Hostname
+Alias: 
+
+routing Policies - 
+    -simple
+    can use mutil values in same record => random choose one
+     when alias enable only AWS Resources
+
+     can't be associate eith Health checks
+    - Latency based
+    -failover , 
+    -Geolocation
+    -geoproximity
+    -IP-based
+    -mutil values
+# Amazon S3 
+     Is manin building blocks of AWS
+     is a key 
+     bucket = object + file name
+
+Amazon S3 -Security
+    IAM allow permission
+
+AmazonS3 - Static Website Hosting 
+Amazon S3 - replication (CRR & SRR)
+    cross region rep / Same Region rep
+
+S3 Storage Classes 
+
+    -
+
+S3 - Object Encryption
+    -Server-side Encryption (SSE) 
+        with Amazon S3- ManagedKeys SSE-S3
+
+        with KMS key stored in AWS KMS (SSE-KMS)
+
+    -
+
+    CORS
+
+#AWS Cloudfront
+
+#AWS Snow Family O
+-Snow cone / SSD 
+    8TB~ /14TB
+ -SNOWMobile
+- Amazon FSx
+-
+# Amazon SQS 
+queue service message 
+# Amazon SNS 
+Notificetion services 
+# Kinesis 
+  - data streams
+# Amazon MQ
+#Amazon ECS
+    instances to manage 
+    Fargate launch tyoe - not need instances
+    - IAM roles dor ECS 
+#amazon ECR 
+#AMAZON EKS
+# AWS App runer 
+auto deploy web app and APIs scale
+
+
+# Cognito identity 
+phan mem ben thu 3 nhu tk social xac thuc
+# amazon athena 
+# machine Learning
+
+# Amazon Transcribe
+#amazon Polly - text to audio
+#amazon LEx and Connection
+Like Weather forest
+# Amazon Comprehend
+#kendra 
+manage document search service 
+extrect answer from document
+
+      
+#CloudTrail 
+enable by default
+by SDK console client 
+
+#AWS config 
+can user config to 
+rule , 
+
+#cloudWath : Performance monitoring, dashbords
+event, alerting, analysis
+#CloudTrail
+    record API call 
+    define trails for Resources
+    globaL Services
+
+# config    
+    record config changes
+    Evaluate resource against compiance rules 
+    get timeline of changes and compliance
+
+# AWS Organizations 
+global service
+mannage multip account
+orther acc is member account
+member can only be part of one Organizations
+# SCP Hierarchy
+
+#AWS WAF - web application Firewall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -63,3 +63,18 @@ sudo chmod -R +r /home/huylx3/.minikube/
 
 sudo usermod -aG docker jenkins
   
+[1:02 PM] Men Nguyen Trung
+git remote set-url origin https://git.ls-electric.com/cto/enfinity
+[1:02 PM] Men Nguyen Trung
+sau day e dung git update
+[1:02 PM] Men Nguyen Trung
+hoac e vao intelij
+[1:02 PM] Men Nguyen Trung
+git -> update
+[1:02 PM] Men Nguyen Trung
+no show ra dialog nhap user + pass la iok
+
+# change name commit 
+git config --list <show list>
+git config --global user.name huy
+git config --global credential.helper cache
